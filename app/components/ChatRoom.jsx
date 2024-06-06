@@ -1,4 +1,4 @@
-const { useState } = require("react");
+const { useState, useRef } = require("react");
 import {
   collection,
   query,
@@ -17,6 +17,7 @@ function ChatRoom() {
   const q = query(messagesRef, orderBy("createdAt"), limit(20));
   const [messages] = useCollectionData(q, { idField: "id" });
   const [formValue, setFormValue] = useState("");
+  const scroll = useRef();
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ function ChatRoom() {
       photoURL,
     });
     setFormValue("");
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <>
@@ -38,6 +40,7 @@ function ChatRoom() {
         <div className="messages">
           {messages &&
             messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          <div ref={scroll}></div>
         </div>
         <form onSubmit={sendMessage} className="send-message-form">
           <input

@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-const apiKey = process.env.FIREBASE_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 console.log("apikey:", apiKey);
 
 const app = initializeApp(firebaseConfig);
