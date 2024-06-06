@@ -1,4 +1,4 @@
-const { useState, useRef } = require("react");
+const { useState, useRef, useEffect } = require("react");
 import {
   collection,
   query,
@@ -14,10 +14,17 @@ import SignOut from "./SignOut";
 
 function ChatRoom() {
   const messagesRef = collection(firestore, "messages");
-  const q = query(messagesRef, orderBy("createdAt"), limit(20));
+  const q = query(messagesRef, orderBy("createdAt"));
   const [messages] = useCollectionData(q, { idField: "id" });
+  console.log("messages:", messages);
   const [formValue, setFormValue] = useState("");
   const scroll = useRef();
+
+  useEffect(() => {
+    if (scroll.current) {
+      scroll.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   const sendMessage = async (e) => {
     e.preventDefault();

@@ -1,5 +1,4 @@
 "use client";
-
 import { auth } from "@/firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import SignIn from "./components/SignIn";
