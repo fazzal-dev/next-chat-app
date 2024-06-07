@@ -157,7 +157,7 @@ body {
   background-color: #0056b3;
 }
 
-/* Media queries for responsiveness */
+
 @media (max-width: 768px) {
   .chat-room {
     width: 95vw;
@@ -185,8 +185,8 @@ body {
   }
 
   .send-message-form {
-    flex-direction: row; /* Ensure it stays in a row */
-    justify-content: space-between; /* Space between input and button */
+    flex-direction: row; 
+    justify-content: space-between; 
   }
 
   .send-message-form input {
@@ -197,7 +197,7 @@ body {
   .send-message-form button {
     font-size: 12px;
     padding: 10px;
-    width: auto; /* Allow the button to be smaller */
+    width: auto; 
   }
 
   .message img {
